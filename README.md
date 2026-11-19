@@ -1,6 +1,16 @@
-# BugemaDesk - Campus Administration System
+# BugemaDesk — Student Management System
 
 BugemaDesk is a secure, role‑based campus administration system for managing students, courses, tuition, and audit trails at Bugema University.
+
+* **Live Demo:** https://student-management-system-144z.onrender.com
+* **GitHub Repository:** https://github.com/Alierabram/student-management-system
+
+## Demo & Staff Login Credentials
+
+* **Admin Email:** `admin@bugemadesk.com`
+* **Demo Registrar Email:** `registrar@bugemauniv.ac.ug`
+
+Passwords are not published in this repository. Obtain account passwords through a secure channel.
 
 ## Overview
 
@@ -78,10 +88,7 @@ MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/bugemadesk?r
 
 The first time you start the app, `scripts/seed.js` runs automatically (called from `start()` in `server.js`). It creates:
 
-- **3 demo users** (Registrar, Accounts, HOD) with default passwords:
-  - `registrar@bugemauniv.ac.ug / Admin@2026`
-  - `accounts@bugemauniv.ac.ug / Accounts@2026`
-  - `hod@bugemauniv.ac.ug / Hod@2026`
+- **3 demo users** (Registrar, Accounts, HOD), configured by `scripts/seed.js`
 - **12 sample students** with courses, marks, and tuition payments
 - **2 initial audit logs**
 
