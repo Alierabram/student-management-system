@@ -490,19 +490,25 @@ tbody tr:hover { background: #f8fafc; }
 }
 
 @media (max-width: 640px) {
+  body.navigation-open { overflow: hidden; }
   .sidebar { z-index: 25; width: min(280px, 84vw); box-shadow: 12px 0 30px rgba(14, 31, 49, .16); transform: translateX(-110%); transition: transform .2s ease; }
   .sidebar.is-open { transform: translateX(0); }
+  .sidebar-scrim:not([hidden]) { display: block; position: fixed; z-index: 20; inset: 0; border: 0; background: rgba(15, 31, 49, .55); }
   .main { width: 100%; margin: 0; padding: 18px 14px 20px; }
-  .topbar { align-items: flex-start; gap: 11px; margin-bottom: 19px; }
+  .topbar { flex-wrap: wrap; align-items: flex-start; gap: 11px; margin-bottom: 19px; }
   .topbar .menu-btn { display: grid; }
   .title-block { flex: 1; }
   .title-block .eyebrow { max-width: 250px; font-size: 8px; letter-spacing: .7px; }
   h1 { font-size: 20px; }
   .subheading { font-size: 11px; }
-  .top-actions { gap: 6px; align-items: flex-end; }
+  .top-actions { flex: 1 0 100%; width: 100%; gap: 8px; align-items: center; flex-direction: row; flex-wrap: wrap; }
   .db-pill { font-size: 9px; }
-  .top-actions .primary-btn { min-height: 35px; padding: 0 9px; font-size: 10px; }
-  .stats { gap: 8px; margin-bottom: 13px; }
+  .top-actions .primary-btn { flex: 1 1 155px; min-height: 42px; padding: 0 9px; font-size: 11px; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 13px; }
+  .overview-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .hero-card { align-items: stretch; flex-direction: column; gap: 16px; padding: 17px; }
+  .hero-actions > button { flex: 1 1 140px; min-height: 42px; }
+  .hero-badge { min-width: 0; }
   .insight-grid { gap: 8px; margin-bottom: 13px; }
   .insight-card { padding: 13px 12px; }
   .recent-list { grid-template-columns: repeat(5, minmax(150px, 1fr)); }
@@ -513,12 +519,12 @@ tbody tr:hover { background: #f8fafc; }
   .stat-foot { font-size: 9px; }
   .panel-head { align-items: flex-start; padding: 16px 14px 13px; }
   .panel-head h2 { font-size: 16px; }
-  .toolbar { gap: 7px; padding: 0 12px 12px; }
-  .searchbox { flex-basis: 100%; }
-  .filter-control { flex: 1 1 42%; }
-  .filter-control select { width: 100%; max-width: none; }
-  .toolbar > .secondary-btn { flex: 1 1 auto; }
+  .toolbar { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 0 12px 12px; }
+  .toolbar > *, .searchbox, .filter-control, .filter-control select, .toolbar > .secondary-btn { width: 100%; min-width: 0; max-width: none; }
+  .searchbox { flex-basis: auto; min-height: 42px; }
+  .filter-control select, .toolbar > .secondary-btn { min-height: 42px; }
   .student-table { min-width: 900px; }
+  .table-wrap { -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
   .student-table th, .student-table td { padding-right: 6px; padding-left: 6px; font-size: 10px; }
   .student-table th { font-size: 8px; letter-spacing: 0; }
   .student-table th:first-child, .student-table td:first-child { padding-left: 9px; }
@@ -528,24 +534,27 @@ tbody tr:hover { background: #f8fafc; }
   .student-name, .course-text { font-size: 10px; }
   .student-email, .department-text { font-size: 9px; }
   .panel-foot { flex-direction: column; gap: 3px; padding: 9px 13px; }
-  .pagination { padding: 10px 13px; }
-  .about-section { gap: 15px; margin-top: 13px; padding: 16px; }
-  .architecture-strip { width: 100%; justify-content: space-between; }
+  .pagination { flex-wrap: wrap; gap: 10px; padding: 10px 13px; }
+  .page-actions { max-width: 100%; flex-wrap: wrap; }
+  .about-section { align-items: stretch; flex-direction: column; gap: 15px; margin-top: 13px; padding: 16px; }
+  .architecture-strip { width: 100%; flex-wrap: wrap; justify-content: space-between; }
   .architecture-strip span { padding: 6px; font-size: 9px; }
-  .modal { width: 100%; max-height: 94vh; padding: 19px 16px; border-radius: 10px 10px 0 0; }
+  .modal-backdrop { align-items: start; padding: 12px; }
+  .modal { width: 100%; max-height: calc(100dvh - 24px); padding: 19px 16px; border-radius: 10px; }
   .form-grid { gap: 11px; }
   .form-grid label { font-size: 10px; }
-  .form-grid input, .form-grid select { min-height: 37px; font-size: 11px; }
+  .form-grid input, .form-grid select { min-height: 42px; font-size: 12px; }
   .details-grid { gap: 0 12px; }
+  .modal-actions { flex-wrap: wrap; }
+  .modal-actions .primary-btn, .modal-actions .secondary-btn { flex: 1 1 130px; min-height: 44px; }
 }
 
 @media (max-width: 380px) {
-  .topbar { flex-wrap: wrap; }
   .title-block { min-width: calc(100% - 52px); }
-  .top-actions { width: 100%; flex-direction: row; justify-content: space-between; padding-left: 47px; }
-  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .form-grid, .details-grid { grid-template-columns: 1fr; }
-  .modal-actions .primary-btn, .modal-actions .secondary-btn { flex: 1; }
+  .stat-card { padding: 10px; }
+  .stat-top { font-size: 9px; }
+  .stat-foot { line-height: 1.4; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -609,6 +618,7 @@ tbody tr:hover { background: #f8fafc; }
   position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
   background: none; border: none; color: #99a4b1; font-size: 12px; cursor: pointer;
 }
+.login-password .login-input { padding-right: 60px; }
 .login-toggle:hover { color: var(--navy); }
 .login-check { display: flex; align-items: center; gap: 8px; margin: 8px 0 16px; font-size: 13px; color: #4a5665; }
 .login-check input { width: 16px; height: 16px; accent-color: var(--blue); }
@@ -647,6 +657,17 @@ tbody tr:hover { background: #f8fafc; }
   .login-shell { flex-direction: column; max-width: 480px; }
   .login-card { flex: 1; padding: 32px 24px; }
   .login-aside { display: none; }
+}
+
+@media (max-width: 480px) {
+  .login-body { padding: 12px; }
+  .login-card { padding: 27px 18px; gap: 18px; }
+  .login-brand { align-items: flex-start; }
+  .login-logo { flex: 0 0 42px; width: 42px; height: 42px; }
+  .login-wordmark { font-size: 23px; }
+  .login-demo { gap: 6px; }
+  .login-demo strong { flex-basis: 100%; }
+  .login-demo span { padding: 0 3px; overflow-wrap: anywhere; }
 }
 
 /* Digital ID Modal */

@@ -19,6 +19,7 @@
       justify-content: center;
       padding: 24px;
     }
+    .verify-page { padding: 0; }
     .verify-card {
       width: 100%;
       max-width: 520px;
@@ -194,11 +195,26 @@
     }
     .back-link:hover { text-decoration: underline; }
     @media (max-width: 640px) {
-      .verify-card { border-radius: 10px 10px 0 0; }
+      .verify-shell { min-height: 100svh; padding: 16px; }
+      .verify-card { border-radius: 10px; }
+      .verify-header { padding: 28px 20px 20px; }
+      .verify-body { padding: 22px 18px 26px; }
+      .detail-row { align-items: flex-start; gap: 12px; }
+      .detail-value { overflow-wrap: anywhere; text-align: right; }
+    }
+    @media (max-width: 480px) {
+      .verify-page { padding: 0; }
+      .verify-shell { padding: 12px; }
+      .verify-title { font-size: 24px; }
+      .verify-subtitle { font-size: 13px; line-height: 1.5; }
+      .verify-header { padding-right: 16px; padding-left: 16px; }
+      .verify-body { padding-right: 14px; padding-left: 14px; }
+      .detail-row { flex-direction: column; gap: 3px; }
+      .detail-value { text-align: left; }
     }
   </style>
 </head>
-<body class="login-body">
+<body class="login-body verify-page">
   <div class="verify-shell">
     <main class="verify-card">
       <header class="verify-header">

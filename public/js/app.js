@@ -24,6 +24,7 @@
 
   const els = {
     sidebar: $("sidebar"),
+    sidebarScrim: $("sidebarScrim"),
     userName: $("userName"),
     userRole: $("userRole"),
     userAvatar: $("userAvatar"),
@@ -112,6 +113,7 @@
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem("bugemadesk_user");
     sessionStorage.removeItem(TOKEN_KEY);
+    sessionStorage.removeItem("bugemadesk_user");
   }
 
   function redirectToLogin() {
@@ -880,20 +882,34 @@
   }
 
   function wireEvents() {
+    function setSidebarOpen(open) {
+      els.sidebar.classList.toggle("is-open", open);
+      els.sidebarScrim.hidden = !open;
+      els.menuBtn.setAttribute("aria-expanded", String(open));
+      els.menuBtn.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      document.body.classList.toggle("navigation-open", open);
+      if (open) {
+        const firstLink = els.sidebar.querySelector(".nav-link");
+        if (firstLink) firstLink.focus();
+      } else {
+        els.menuBtn.focus();
+      }
+    }
+
     els.logoutBtn.addEventListener("click", function () {
       clearAuth();
       redirectToLogin();
     });
 
     els.menuBtn.addEventListener("click", function () {
-      const open = els.sidebar.classList.toggle("is-open");
-      this.setAttribute("aria-expanded", String(open));
+      setSidebarOpen(!els.sidebar.classList.contains("is-open"));
     });
+
+    els.sidebarScrim.addEventListener("click", () => setSidebarOpen(false));
 
     els.sidebar.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        els.sidebar.classList.remove("is-open");
-        els.menuBtn.setAttribute("aria-expanded", "false");
+        setSidebarOpen(false);
       });
     });
 
@@ -917,6 +933,7 @@
 
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape") {
+        if (els.sidebar.classList.contains("is-open")) setSidebarOpen(false);
         if (!els.formBackdrop.hidden) closeForm();
         else if (!els.profileBackdrop.hidden) closeProfile();
         else if (!els.confirmBackdrop.hidden) closeConfirm();

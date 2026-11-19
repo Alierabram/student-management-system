@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
   <meta name="theme-color" content="#102a43">
   <meta name="robots" content="noindex">
   <title>Student Management System | Bugema University</title>
@@ -47,9 +46,11 @@
       </div>
     </aside>
 
+    <button class="sidebar-scrim" id="sidebarScrim" type="button" aria-label="Close navigation" hidden></button>
+
     <main class="main" id="overview">
       <header class="topbar">
-        <button class="menu-btn" id="menuBtn" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
         <div class="title-block">
           <div class="eyebrow">BUGEMA UNIVERSITY · CAMPUS ADMINISTRATION</div>
           <h1>Student Management</h1>
@@ -544,101 +545,3 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" defer></script>
 </body>
 </html>
-=======
-  <meta name="theme-color" content="#111c37">
-  <title>SchoolFlow | School Management System</title>
-  <link rel="stylesheet" href="/styles.css">
-  <script src="/attendance-export.js" defer></script>
-  <script src="/school-documents.js" defer></script>
-  <script src="/app.js" defer></script>
-</head>
-<body>
-  <div id="toastRegion" class="toast-region" aria-live="polite"></div>
-
-  <main id="loginView" class="login-shell hidden">
-    <section class="login-panel">
-      <div class="brand-mark large">SF</div>
-      <p class="eyebrow">SCHOOL ADMINISTRATION</p>
-      <h1>Welcome back</h1>
-      <p class="muted">Sign in to manage your school in one place.</p>
-      <form id="loginForm" class="stack-form">
-        <label>Student ID / Email<input name="emailOrAdmission" type="text" required autocomplete="username"></label>
-        <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
-        <p class="login-note">Enter your student admission number (e.g. STU-001) or email address</p>
-        <button class="btn primary full" type="submit">Sign in <span aria-hidden="true">→</span></button>
-        <p id="loginError" class="form-error"></p>
-      </form>
-      <p class="login-foot">Use the administrator account configured and seeded from your local environment.</p>
-    </section>
-    <section class="login-art">
-      <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
-      <div class="art-card">
-        <div class="art-card-top"><span class="live-dot"></span> SCHOOL OVERVIEW <span class="art-date">ACADEMIC YEAR</span></div>
-        <div class="art-stats"><div><span>Students</span><strong>01</strong></div><div><span>Teachers</span><strong>01</strong></div><div><span>Classes</span><strong>01</strong></div></div>
-        <div class="art-bars"><i style="height:35%"></i><i style="height:50%"></i><i style="height:43%"></i><i style="height:76%"></i><i style="height:61%"></i><i style="height:88%"></i><i style="height:70%"></i><i style="height:95%"></i></div>
-        <p class="art-note">A smarter way to run your school.</p>
-      </div>
-      <div class="login-art-copy"><p class="eyebrow">ONE CONNECTED PLATFORM</p><h2>Less paperwork.<br>More learning.</h2><p>Keep school records organised, accessible and up to date.</p></div>
-    </section>
-  </main>
-
-  <div id="appView" class="app-shell hidden">
-    <aside id="sidebar" class="sidebar">
-      <div class="brand-row"><div class="brand-mark">SF</div><div class="brand-copy"><strong>SchoolFlow</strong><span>Management Suite</span></div><button id="closeSidebar" class="icon-btn mobile-only" aria-label="Close menu">×</button></div>
-      <div class="school-switch"><div class="school-avatar">S</div><div><strong>My School</strong><span>Administration</span></div><span class="switch-dots">•••</span></div>
-      <p class="nav-label">WORKSPACE</p>
-      <nav id="mainNav" class="main-nav">
-        <button class="nav-item active" data-view="dashboard"><span class="nav-icon">◫</span><span>Overview</span></button>
-        <p class="nav-label nav-group-label">SCHOOL RECORDS</p>
-        <button class="nav-item" data-view="students"><span class="nav-icon">♙</span><span>Students</span><span class="nav-count" data-count="students">0</span></button>
-        <button class="nav-item" data-view="teachers"><span class="nav-icon">♧</span><span>Teachers</span><span class="nav-count" data-count="teachers">0</span></button>
-        <button class="nav-item" data-view="classes"><span class="nav-icon">▦</span><span>Classes</span></button>
-        <button class="nav-item" data-view="subjects"><span class="nav-icon">▤</span><span>Subjects</span></button>
-        <p class="nav-label nav-group-label">ACADEMIC</p>
-        <button class="nav-item" data-view="attendance"><span class="nav-icon">◷</span><span>Attendance</span></button>
-        <button class="nav-item" data-view="exams"><span class="nav-icon">▣</span><span>Exams</span></button>
-        <button class="nav-item" data-view="results"><span class="nav-icon">▥</span><span>Results</span></button>
-        <button class="nav-item" data-view="fees"><span class="nav-icon">＄</span><span>School fees</span></button>
-        <button class="nav-item" data-view="feeStructures"><span class="nav-icon">▤</span><span>Fee structures</span></button>
-      </nav>
-      <div class="sidebar-bottom"><div class="help-card"><div class="help-icon">✦</div><strong>Stay organised</strong><p>Keep your school records accurate and up to date.</p></div><button id="logoutBtn" class="nav-item logout-item"><span class="nav-icon">↪</span><span>Sign out</span></button></div>
-    </aside>
-    <div id="mobileScrim" class="mobile-scrim"></div>
-    <section class="main-panel">
-      <header class="topbar"><div class="topbar-left"><button id="menuToggle" class="icon-btn mobile-only" aria-label="Open menu">☰</button><div class="breadcrumb"><span>Workspace</span><b>/</b><strong id="crumbTitle">Overview</strong></div></div><div class="topbar-right"><div class="date-chip"><span class="calendar-icon">▦</span><span id="todayDate">Today</span></div><div class="user-profile"><div class="user-avatar">SA</div><div class="user-info"><strong>School Admin</strong><span>Administrator</span></div></div><button id="logoutTopBtn" class="btn secondary topbar-logout" type="button" aria-label="Sign out"><span aria-hidden="true">↪</span><span class="topbar-logout-label">Sign out</span></button></div></header>
-      <main id="pageContent" class="page-content"><div class="loading-state"><span class="spinner"></span> Loading your school dashboard…</div></main>
-      <footer class="app-footer"><span>SchoolFlow <span id="footerYear"></span></span><span>School records, made simpler.</span></footer>
-    </section>
-  </div>
-
-  <div id="studentView" class="app-shell hidden">
-    <aside id="studentSidebar" class="sidebar">
-      <div class="brand-row"><div class="brand-mark">SF</div><div class="brand-copy"><strong>SchoolFlow</strong><span>Student Portal</span></div><button id="closeStudentSidebar" class="icon-btn mobile-only" aria-label="Close menu">×</button></div>
-      <div class="school-switch"><div class="school-avatar" id="studentAvatar">S</div><div><strong id="studentName">Student</strong><span id="studentClass">Class</span></div></div>
-      <p class="nav-label">MY PORTAL</p>
-      <nav id="studentNav" class="main-nav">
-        <button class="nav-item active" data-student-tab="overview"><span class="nav-icon">◫</span><span>Dashboard Overview</span></button>
-        <button class="nav-item" data-student-tab="attendance"><span class="nav-icon">◷</span><span>My Attendance</span></button>
-        <button class="nav-item" data-student-tab="reportcards"><span class="nav-icon">▥</span><span>My Report Cards</span></button>
-        <button class="nav-item" data-student-tab="fees"><span class="nav-icon">＄</span><span>My Fees Statement</span></button>
-      </nav>
-      <div class="sidebar-bottom"><div class="help-card student-help"><div class="help-icon">✦</div><strong>Your records, your access</strong><p>View your attendance, results and fees anytime.</p></div><button id="studentLogoutBtn" class="nav-item logout-item"><span class="nav-icon">↪</span><span>Sign out</span></button></div>
-    </aside>
-    <div id="studentScrim" class="mobile-scrim"></div>
-    <section class="main-panel">
-      <header class="topbar"><div class="topbar-left"><button id="studentMenuToggle" class="icon-btn mobile-only" aria-label="Open menu">☰</button><div class="breadcrumb"><span>Student Portal</span><b>/</b><strong id="studentCrumb">Overview</strong></div></div><div class="topbar-right"><div class="date-chip"><span class="calendar-icon">▦</span><span id="studentTodayDate">Today</span></div><div class="user-profile"><div class="user-avatar" id="studentUserAvatar">S</div><div class="user-info"><strong id="studentUserName">Student</strong><span>Student</span></div></div><button id="studentLogoutTopBtn" class="btn secondary topbar-logout" type="button" aria-label="Sign out"><span aria-hidden="true">↪</span><span class="topbar-logout-label">Sign out</span></button></div></header>
-      <main id="studentContent" class="page-content"><div class="loading-state"><span class="spinner"></span> Loading your portal…</div></main>
-      <footer class="app-footer"><span>SchoolFlow Student Portal <span id="studentFooterYear"></span></span><span>Your records, anytime.</span></footer>
-    </section>
-  </div>
-
-  <div id="modalLayer" class="modal-layer hidden" role="presentation">
-    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <header class="modal-header"><div><p class="eyebrow" id="modalEyebrow">SCHOOL RECORD</p><h2 id="modalTitle">Add record</h2></div><button id="modalClose" class="icon-btn close-modal" aria-label="Close">×</button></header>
-      <form id="recordForm"><div id="formFields" class="form-grid"></div><p id="formError" class="form-error"></p><div class="modal-actions"><button type="button" id="cancelForm" class="btn secondary">Cancel</button><button type="submit" id="saveRecord" class="btn primary">Save record</button></div></form>
-    </section>
-  </div>
-  <div id="confirmLayer" class="modal-layer hidden"><section class="confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle"><div class="confirm-symbol">!</div><h2 id="confirmTitle">Delete this record?</h2><p id="confirmMessage">This action cannot be undone.</p><div class="modal-actions"><button id="cancelDelete" class="btn secondary" type="button">Cancel</button><button id="confirmDelete" class="btn danger" type="button">Delete record</button></div></section></div>
-</body>
-</html>
->>>>>>> origin/main

@@ -53,7 +53,7 @@
 
       <div class="login-demo">
         <strong>Demo Registrar Account</strong>
-        <span>admin@bugemauniv.ac.ug</span>
+        <span>registrar@bugemauniv.ac.ug</span>
         <span>Admin@2026</span>
       </div>
 
@@ -154,14 +154,21 @@
           });
           var data = await response.json().catch(function () { return {}; });
           if (!response.ok) throw new Error(data.error || "Unable to sign in.");
+          if (!data || typeof data.token !== "string" || !data.token.trim()) {
+            throw new Error("Sign-in response did not include an authentication token.");
+          }
 
           localStorage.removeItem(TOKEN_KEY);
           sessionStorage.removeItem(TOKEN_KEY);
           var store = rememberInput.checked ? localStorage : sessionStorage;
           store.setItem(TOKEN_KEY, data.token);
-          localStorage.setItem("bugemadesk_user", JSON.stringify(data.user));
+          if (data.user && typeof data.user === "object") {
+            localStorage.setItem("bugemadesk_user", JSON.stringify(data.user));
+          } else {
+            localStorage.removeItem("bugemadesk_user");
+          }
 
-          showToast("Welcome back, " + data.user.name + ".");
+          showToast("Sign in successful.");
           window.setTimeout(function () {
             window.location.replace("index.html");
           }, 450);
